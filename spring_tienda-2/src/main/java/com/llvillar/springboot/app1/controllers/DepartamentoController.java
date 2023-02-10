@@ -26,7 +26,7 @@ import com.llvillar.springboot.app1.services.EmpleadosService;
 
 @Controller
 @RequestMapping("/departamentos")
-@PreAuthorize("hasAnyAuthority('ADMIN')")
+@PreAuthorize("hasAnyAuthority('ADMIN','DEPARTAMENTOS')")
 public class DepartamentoController {
 
     @Autowired

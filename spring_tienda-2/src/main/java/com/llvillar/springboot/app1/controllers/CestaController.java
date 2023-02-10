@@ -20,7 +20,7 @@ import com.llvillar.springboot.app1.services.ClientesService;
 
 @Controller
 @RequestMapping("/cesta")
-@PreAuthorize("hasAnyAuthority('ADMIN')")
+@PreAuthorize("hasAnyAuthority('ADMIN','CESTA')")
 public class CestaController {
 
 

@@ -79,4 +79,9 @@ public class Permiso {
     public void setUsers(List<Usuario> users) {
         this.users = users;
     }
+
+    public Permiso(long codigo, String nombre) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+    }
 }

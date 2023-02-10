@@ -115,5 +115,13 @@ public class Usuario {
         this.permissions = permissions;
     }
 
-    
+    public Usuario(long codigo, String name, String email, String password) {
+        this.codigo = codigo;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+
+    public Usuario() {
+    }
 }

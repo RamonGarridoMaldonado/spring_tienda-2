@@ -22,7 +22,7 @@ import com.llvillar.springboot.app1.services.EmpleadosService;
 
 @Controller
 @RequestMapping("/empleados")
-@PreAuthorize("hasAnyAuthority('ADMIN')")
+@PreAuthorize("hasAnyAuthority('ADMIN','EMPLEADOS')")
 public class EmpleadoController {
 
     @Autowired

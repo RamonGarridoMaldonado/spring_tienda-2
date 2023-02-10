@@ -30,7 +30,7 @@ import com.llvillar.springboot.app1.services.ProductosService;
 
 @Controller
 @RequestMapping("/productos")
-@PreAuthorize("hasAnyAuthority('ADMIN')")
+@PreAuthorize("hasAnyAuthority('ADMIN','PRODUCTOS')")
 public class ProductoController {
 
     @Autowired

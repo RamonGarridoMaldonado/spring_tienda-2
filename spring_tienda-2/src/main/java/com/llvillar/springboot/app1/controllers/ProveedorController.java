@@ -22,7 +22,7 @@ import com.llvillar.springboot.app1.services.ProveedoresService;
 
 @Controller
 @RequestMapping("/proveedores")
-@PreAuthorize("hasAnyAuthority('ADMIN')")
+@PreAuthorize("hasAnyAuthority('ADMIN','PROVEEDORES')")
 public class ProveedorController {
 
     @Autowired

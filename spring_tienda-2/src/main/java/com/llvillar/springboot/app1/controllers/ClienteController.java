@@ -25,7 +25,7 @@ import com.llvillar.springboot.app1.services.ClientesService;
 
 @Controller
 @RequestMapping("/clientes")
-@PreAuthorize("hasAnyAuthority('ADMIN','USUARIO')")
+@PreAuthorize("hasAnyAuthority('ADMIN','CLIENTES')")
 public class ClienteController {
 
     @Autowired

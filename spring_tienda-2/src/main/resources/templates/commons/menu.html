@@ -17,10 +17,10 @@
                         <a class="nav-link" th:href="@{/productos/list}" href="productos/list.html"  th:text="#{menu.productos}" sec:authorize="hasAuthority('ADMIN')">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/clientes/list}" href="clientes/list.html"  th:text="#{menu.clientes}" sec:authorize="hasAnyAuthority('ADMIN','USUARIO')">Clientes</a>
+                        <a class="nav-link" th:href="@{/clientes/list}" href="clientes/list.html"  th:text="#{menu.clientes}" sec:authorize="hasAnyAuthority('ADMIN','USER')">Clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/pedidos/list}" href="pedidos/list.html"  th:text="#{menu.pedidos}" sec:authorize="hasAnyAuthority('USUARIO','CLIENTES','ADMIN')">Pedidos</a>
+                        <a class="nav-link" th:href="@{/pedidos/list}" href="pedidos/list.html"  th:text="#{menu.pedidos}" sec:authorize="hasAnyAuthority('USER','CLIENTES','ADMIN')">Pedidos</a>
                     </li>  
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/proveedores/list}" href="proveedores/list.html" sec:authorize="hasAuthority('ADMIN')">Proveedores</a>

@@ -26,7 +26,7 @@ import com.llvillar.springboot.app1.services.PedidosService;
 
 @Controller
 @RequestMapping("/pedidos")
-@PreAuthorize("hasAnyAuthority('ADMIN','USUARIO','CLIENTES')")
+@PreAuthorize("hasAnyAuthority('ADMIN','PEDIDOS')")
 public class PedidoController {
 
     @Autowired
