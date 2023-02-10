@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-App1Application<app1>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.llvillar.springboot.app1.App1Application",
+            "projectName": "app1",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

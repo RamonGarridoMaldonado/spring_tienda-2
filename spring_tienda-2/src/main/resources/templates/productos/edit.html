@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="commons/header :: header">
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" th:href="@{/css/bootstrap.css}" href="../../static/css/bootstrap.css" />
+  <script th:src="@{/js/bootstrap.js}" src="../../static/js/bootstrap.js"></script>
+  <script th:src="@{/js/jquery-3.6.1.min.js}" src="../../static/js/jquery-3.6.1.min.js"></script>
+  <title>clienets@</title>
+</head>
+
+<body>
+  <div th:replace="commons/menu :: menu" />
+
+  <div class="container">
+    <main>
+      <div class="row g-5">
+        <div class="col-12">
+          <h4 class="mb-12" th:text="#{producto.edicion.titulo}">Datos Producto</h4>
+        </div>
+      </div>
+
+
+
+      <form class="needs-validation" method="post" th:action="@{/productos/update}" enctype="multipart/form-data">
+
+        <div class="row g-5">
+          <div class="col-6">
+            <img th:src="'data:image/jpeg;base64,' + ${producto.imageView}" src="../static/img/cocacola.jpg"
+              class="rounded img-fluid" alt="..." />
+
+            <div class="mb-3" th:if="${!cesta}">
+              <label for="formFile" class="form-label">Default file input example</label>
+              <input class="form-control" type="file" id="imageForm" name="imageForm">
+            </div>
+          </div>
+
+
+          <div class="col-6">
+            <input type="hidden" name="codigo" th:value="${producto.codigo}">
+
+            <label for="nombre" class="form-label" th:text="#{producto.nombre}">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder=""
+              th:value="${producto.nombre}" value="" required>
+            <div class="invalid-feedback">
+              Nombre requerido.
+            </div>
+
+            <label for="lastName" class="form-label" th:text="#{producto.descripcion}">Descripcion</label>
+            <textarea rows="5" class="form-control" id="descripcion" name="descripcion" placeholder="" th:field="${producto.descripcion}"></textarea>
+            <div class="invalid-feedback">
+            </div>
+
+            <label for="precio" class="form-label" th:text="#{producto.precio}">Precio</label>
+            <input type="text" class="form-control" id="precio" name="precio" placeholder=""
+              th:value="${producto.precio}" value="" required>
+            <div class="invalid-feedback">
+              precio.
+            </div>
+
+            <br><br>
+            <!-- control de cantidad añadir a la cesta -->
+            <div class="row" th:if="${cesta}">
+              <div class="col-sm-4">
+
+                <label for="quantity">Cantidad:</label>
+                <input type="number" id="quantity" name="quantity" min="1" max="500" value="1">
+              </div>
+
+              <div class="col-sm-1">
+                <a class="btn btn-primary" th:href="@{/productos/addcesta/{codigo}/{cantidad}(codigo=${producto.codigo},cantidad=2)}" role="button"><i class="bi bi-cart3"></i></a>
+                
+              </div>
+
+            </div>
+
+
+
+          </div>
+
+
+
+        </div>
+        <div class="row" th:if="${!cesta}">
+          <div class="col-sm-12">
+            <div class="btn-group">
+              <a class="btn btn-primary" th:href="@{/productos/list}" href="#" role="button"
+                th:text="#{boton.cancelar}">Cancelar</a>
+              <button class="btn btn-primary" type="submit" th:text="#{boton.actualizar}">Actualizar</button>
+              <a class="btn btn-primary" th:href="@{/productos/delete/}+${producto.codigo}" href="#" role="button"><i class="bi bi-trash"></i></a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <div th:replace="commons/footer :: footer" class="container"></div>
+
+</body>
+
+</html>

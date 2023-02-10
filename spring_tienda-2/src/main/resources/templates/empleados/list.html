@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="commons/header :: header" />
+
+<body>
+  <div th:replace="commons/menu :: menu" />
+
+  <div class="container">
+
+    <div class="row">
+      <h3>Empleados</h3>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href="@{/empleados/create}" class="btn btn-primary btn-sm mb-3" th:text="#{cliente.boton.nuevo}">Nuevo cliente</a>
+        </div>
+    </div>
+
+    <div class="row">
+      <table class="table table-striped table-hover">
+        <caption>Lista de empleados</caption>
+        <thead>
+          <tr>
+            <th scope="col" th:text="#{cliente.codigo}">Código</th>
+            <th scope="col" th:text="#{cliente.nombre}">Nombre</th>
+            <th scope="col" th:text="#{cliente.apellidos}">Apellidos</th>
+            <th scope="col" th:text="#{cliente.email}">Email</th>
+            <th scope="col" th:text="#{cliente.dni}">DNI</th>
+            <th scope="col" th:text="#{cliente.telefono}">Teléfono</th>
+            <th scope="col" th:text="#{cliente.direccion}">Dirección</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="cliente : ${empleados}">
+            <th th:text="${cliente.codigo}" scope="row">1</th>
+            <td th:text="${cliente.nombre}">Mark</td>
+            <td th:text="${cliente.apellidos}">Mark</td>
+            <td th:text="${cliente.email}">Mark</td>
+            <td th:text="${cliente.dni}">Mark</td>
+            <td th:text="${cliente.telefono}">Mark</td>
+            <td th:text="${cliente.direccion}">Mark</td>
+            <td>
+              <a class="btn btn-primary" th:href="@{/empleados/edit/}+${cliente.codigo}" href="#" role="button"><i class="bi bi-pencil-square"></i></a>
+              <a class="btn btn-primary" th:href="@{/empleados/delete/}+${cliente.codigo}" href="#" role="button"><i class="bi bi-trash"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="row">
+
+      <head th:replace="commons/pagination :: pagination" />
+
+    </div>
+
+  </div>
+  
+  <div th:replace="commons/footer :: footer" class="container" /> 
+  </body>
+</html>

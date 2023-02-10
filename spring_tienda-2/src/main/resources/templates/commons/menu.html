@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div th:fragment="menu">
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#" th:text="#{menu.menu}">Menu</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{/login/welcome}" href="welcome.html"  th:text="#{menu.inicio}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/productos/list}" href="productos/list.html"  th:text="#{menu.productos}" sec:authorize="hasAuthority('ADMIN')">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/clientes/list}" href="clientes/list.html"  th:text="#{menu.clientes}" sec:authorize="hasAnyAuthority('ADMIN','USUARIO')">Clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/pedidos/list}" href="pedidos/list.html"  th:text="#{menu.pedidos}" sec:authorize="hasAnyAuthority('USUARIO','CLIENTES','ADMIN')">Pedidos</a>
+                    </li>  
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/proveedores/list}" href="proveedores/list.html" sec:authorize="hasAuthority('ADMIN')">Proveedores</a>
+                    </li>                                        
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/empleados/list}" href="empleados/list.html" sec:authorize="hasAuthority('ADMIN')">Empleados</a>
+                    </li>                                        
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/departamentos/list}" href="departamentos/list.html" sec:authorize="hasAuthority('ADMIN')">Departamentos</a>
+                    </li>                                        
+                    <!--
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Mapa</a>
+                    </li>                            
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                    -->
+                    </ul>
+                    <ul class="navbar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/cesta/edit}" href="#"><i class="bi bi-cart3"></i></a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            &#127760;
+                        </a>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" th:href="@{/login/welcome?lang_config=es}" href="#"  th:text="#{menu.idioma.espanol}">Español</a>
+                          <a class="dropdown-item" th:href="@{/login/welcome?lang_config=en}" href="#" th:text="#{menu.idioma.ingles}">Inglés</a>
+                        </div>
+                    </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit"  th:text="#{menu.buscar}">Buscar</button>
+                    </form>
+
+                    <a class="navbar-nav" th:href="@{/logout}" href="#"><i class="bi bi-box-arrow-left" th:text="logout"></i></a>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+    </body>
+</html>

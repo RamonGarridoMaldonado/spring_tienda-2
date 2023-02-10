@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="commons/header :: header" />
+
+<body>
+  <div th:replace="commons/menu :: menu" />
+
+  <div class="container">
+    <span sec:authorize="isAuthenticated()">
+      | Logged user: <span sec:authentication="name"></span>
+      Roles: <span sec:authentication="principal.authorities"></span>
+      <a th:href="@{/logout}">Desconectar</a>
+    </span>
+
+  </div>
+  
+  <div th:replace="commons/footer :: footer" class="container" /> 
+  </body>
+</html>
